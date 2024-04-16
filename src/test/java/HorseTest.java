@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,25 +37,28 @@ class HorseTest {
     void getName() {
         Horse horse = new Horse("name", 5.0, 100.0);
         String actual = horse.getName();
-        assertEquals(actual, "name");
+        assertEquals("name", actual);
     }
 
     @Test
     void getSpeed() {
         Horse horse = new Horse("name", 5.0, 100.0);
         double actual = horse.getSpeed();
-        assertEquals(actual, 5.0);
+        assertEquals(5.0, actual);
     }
 
     @Test
     void getDistance() {
         Horse horse = new Horse("name", 5.0, 100.0);
         double actual = horse.getDistance();
-        assertEquals(actual, 100.0);
+        assertEquals(100.0, actual);
     }
 
     @Test
     void move() {
-
+        try (MockedStatic<Horse> mockedHorse = Mockito.mockStatic(Horse.class)) {
+            new Horse("name", 5.0, 100.0).move();
+            mockedHorse.verify(() -> Horse.getRandomDouble(0.2, 0.9));
+        }
     }
 }
