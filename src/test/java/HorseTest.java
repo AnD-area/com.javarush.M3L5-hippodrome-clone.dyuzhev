@@ -5,66 +5,55 @@ import static org.junit.jupiter.api.Assertions.*;
 class HorseTest {
     @Test
     public void HorseConstructorNullException() {
-        assertThrows(IllegalArgumentException.class,
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> new Horse(null, 10.0, 100.0));
-    }
-
-    @Test
-    public void HorseConstructorNullMessageExpression() {
-        String message = assertThrows(IllegalArgumentException.class,
-                () -> new Horse(null, 10.0, 100.0)).getMessage();
-        assertEquals(message, "Name cannot be null.");
+        assertEquals("Name cannot be null.", e.getMessage());
     }
 
     @Test
     public void HorseConstructorSpaceSymbolsException() {
-        assertThrows(IllegalArgumentException.class,
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> new Horse("\s", 10.0, 100.0));
-    }
-
-    @Test
-    public void HorseConstructorSpaceSymbolsMessage() {
-        String message = assertThrows(IllegalArgumentException.class,
-                () -> new Horse("\s", 10.0, 100.0)).getMessage();
-        assertEquals(message, "Name cannot be blank.");
+        assertEquals("Name cannot be blank.", e.getMessage());
     }
 
     @Test
     public void HorseConstructorSpeedNotNegative() {
-        assertThrows(IllegalArgumentException.class,
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> new Horse("name", -5.0, 100.0));
+        assertEquals("Speed cannot be negative.", e.getMessage());
     }
-    @Test
-    public void HorseConstructorSpeedNotNegativeMessage() {
-        String message = assertThrows(IllegalArgumentException.class,
-                () -> new Horse("name", -5.0, 100.0)).getMessage();
-        assertEquals(message, "Speed cannot be negative.");
-    }
+
     @Test
     public void HorseConstructorDistanceNotNegative() {
-        assertThrows(IllegalArgumentException.class,
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> new Horse("name", 5.0, -100.0));
-    }
-    @Test
-    public void HorseConstructorDistanceNotNegativeMessage() {
-        String message = assertThrows(IllegalArgumentException.class,
-                () -> new Horse("name", 5.0, -100.0)).getMessage();
-        assertEquals(message, "Distance cannot be negative.");
+        assertEquals("Distance cannot be negative.", e.getMessage());
     }
 
     @Test
     void getName() {
+        Horse horse = new Horse("name", 5.0, 100.0);
+        String actual = horse.getName();
+        assertEquals(actual, "name");
     }
 
     @Test
     void getSpeed() {
+        Horse horse = new Horse("name", 5.0, 100.0);
+        double actual = horse.getSpeed();
+        assertEquals(actual, 5.0);
     }
 
     @Test
     void getDistance() {
+        Horse horse = new Horse("name", 5.0, 100.0);
+        double actual = horse.getDistance();
+        assertEquals(actual, 100.0);
     }
 
     @Test
     void move() {
+
     }
 }
