@@ -5,14 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class HorseTest {
     @Test
     public void HorseConstructorNullException() {
-        assertThrows(IllegalArgumentException.class, () -> new Horse(null, 10.0, 100.0));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Horse(null, 10.0, 100.0));
     }
 
     @Test
     public void HorseConstructorNullMessageExpression() {
-        String exceptionString = assertThrows(IllegalArgumentException.class,
+        String message = assertThrows(IllegalArgumentException.class,
                 () -> new Horse(null, 10.0, 100.0)).getMessage();
-        assertEquals(exceptionString, "Name cannot be null.");
+        assertEquals(message, "Name cannot be null.");
     }
 
     @Test
@@ -23,9 +24,32 @@ class HorseTest {
 
     @Test
     public void HorseConstructorSpaceSymbolsMessage() {
-        String exceptionString = assertThrows(IllegalArgumentException.class,
+        String message = assertThrows(IllegalArgumentException.class,
                 () -> new Horse("\s", 10.0, 100.0)).getMessage();
-        assertEquals(exceptionString, "Name cannot be blank.");
+        assertEquals(message, "Name cannot be blank.");
+    }
+
+    @Test
+    public void HorseConstructorSpeedNotNegative() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Horse("name", -5.0, 100.0));
+    }
+    @Test
+    public void HorseConstructorSpeedNotNegativeMessage() {
+        String message = assertThrows(IllegalArgumentException.class,
+                () -> new Horse("name", -5.0, 100.0)).getMessage();
+        assertEquals(message, "Speed cannot be negative.");
+    }
+    @Test
+    public void HorseConstructorDistanceNotNegative() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Horse("name", 5.0, -100.0));
+    }
+    @Test
+    public void HorseConstructorDistanceNotNegativeMessage() {
+        String message = assertThrows(IllegalArgumentException.class,
+                () -> new Horse("name", 5.0, -100.0)).getMessage();
+        assertEquals(message, "Distance cannot be negative.");
     }
 
     @Test
