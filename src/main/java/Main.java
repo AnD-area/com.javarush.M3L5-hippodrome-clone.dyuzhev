@@ -21,7 +21,7 @@ public class Main {
 
         logger.info("Начало скачек. Количество участников: {}", horses.size());
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 4; i++) {
             hippodrome.move();
             watch(hippodrome);
             TimeUnit.MILLISECONDS.sleep(200);
