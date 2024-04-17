@@ -38,31 +38,31 @@ class HorseTest {
     }
 
     @Test
-    void getName() {
+    public void getName() {
         Horse horse = new Horse("name", 5, 100);
         assertEquals("name", horse.getName());
     }
 
     @Test
-    void getSpeed() {
+    public void getSpeed() {
         Horse horse = new Horse("name", 5, 100);
         assertEquals(5.0, horse.getSpeed());
     }
 
     @Test
-    void getDistance() {
+    public void getDistance() {
         Horse horse = new Horse("name", 5, 100);
         assertEquals(100, horse.getDistance());
     }
 
     @Test
-    void zeroDistance() {
+    public void zeroDistance() {
         Horse horse = new Horse("name", 5);
         assertEquals(0, horse.getDistance());
     }
 
     @Test
-    void move() {
+    public void move() {
         try (MockedStatic<Horse> mockedHorse = Mockito.mockStatic(Horse.class)) {
             new Horse("name", 5, 100).move();
             mockedHorse.verify(() -> Horse.getRandomDouble(0.2, 0.9));
