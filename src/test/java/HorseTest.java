@@ -40,24 +40,28 @@ class HorseTest {
     @Test
     public void getName() {
         Horse horse = new Horse("name", 5, 100);
+
         assertEquals("name", horse.getName());
     }
 
     @Test
     public void getSpeed() {
         Horse horse = new Horse("name", 5, 100);
+
         assertEquals(5.0, horse.getSpeed());
     }
 
     @Test
     public void getDistance() {
         Horse horse = new Horse("name", 5, 100);
+
         assertEquals(100, horse.getDistance());
     }
 
     @Test
     public void zeroDistance() {
         Horse horse = new Horse("name", 5);
+
         assertEquals(0, horse.getDistance());
     }
 

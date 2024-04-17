@@ -21,7 +21,7 @@ public class HippodromeTest {
     @Test
     public void HippodromeConstructorNotEmptyHorses() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-                () -> new Hippodrome(new ArrayList<Horse>()));
+                () -> new Hippodrome(new ArrayList<>()));
         assertEquals("Horses cannot be empty.", e.getMessage());
     }
 
@@ -31,6 +31,7 @@ public class HippodromeTest {
         for (int i = 0; i < 30; i++) {
             horses.add(new Horse("name " + i, i, i));
             Hippodrome hippo = new Hippodrome(horses);
+
             assertEquals(horses, hippo.getHorses());
         }
     }
@@ -58,6 +59,7 @@ public class HippodromeTest {
         Horse horse3 = new Horse("name3", 5, 8);
         Collections.addAll(horses, horse1, horse2, horse3);
         Hippodrome hippo = new Hippodrome(horses);
+
         assertSame(horse2, hippo.getWinner());
     }
 }
