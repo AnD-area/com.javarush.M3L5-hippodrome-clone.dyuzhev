@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
+
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
@@ -21,7 +22,7 @@ public class Main {
 
         logger.info("Начало скачек. Количество участников: {}", horses.size());
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 100; i++) {
             hippodrome.move();
             watch(hippodrome);
             TimeUnit.MILLISECONDS.sleep(200);
